@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Gestion de Patrimoine - Dashboard</title>
+
+    <!-- Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- pour le graphique -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/charts.js"></script>
+
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">recherche</span>
+        </div>
+        <div class="header-right">
+          <span class="material-icons-outlined">notifications</span>
+          <span class="material-icons-outlined">email</span>
+          <span class="material-icons-outlined">account_circle</span> 
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">mood</span> NadiraLogo
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="#">
+              <!-- accueil -->
+              <span class="material-icons-outlined">home</span> Accueil
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <!-- Mes biens -->
+              <span class="material-icons-outlined">house</span> Mes biens
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <!-- Trésorerie -->
+              <span class="material-icons-outlined">account_balance_wallet</span> Trésorerie
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <!-- Documents -->
+              <span class="material-icons-outlined">description</span> Documents  
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <!-- Contact -->
+              <span class="material-icons-outlined">contact_page</span> Contact
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <!-- Paramètres -->
+              <span class="material-icons-outlined">settings</span> Paramètres
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <!-- compte -->
+              <span class="material-icons-outlined">account_circle</span> Compte
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <h2>Gestion de Patrimoine</h2>
+        </div>
+
+        <div class="main-cards">
+          <div class="card">
+            <div class="card-header">
+              <h3>Biens</h3>
+              <span class="material-icons-outlined">house</span>
+            </div>
+            <div class="card-body">
+              <h4>Nombre de biens</h4>
+              <p>5</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Trésorerie</h3>
+              <span class="material-icons-outlined">account_balance_wallet</span>
+            </div>
+            <div class="card-body">
+              <h4>Montant total</h4>
+              <p>5000 €</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Documents</h3>
+              <span class="material-icons-outlined">description</span>
+            </div>
+            <div class="card-body">
+              <h4>Nombre de documents</h4>
+              <p>10</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Contact</h3>
+              <span class="material-icons-outlined">contact_page</span>
+            </div>
+            <div class="card-body">
+              <h4>Nombre de contacts</h4>
+              <p>5</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ajout de biens (bouton avec icone) -->
+        
+        <!-- ajout de biens -->
+        <div class="add-property">
+          <h2>Ajouter un Bien</h2>
+          <!-- ajout de biens (bouton avec icone) -->
+        <div class="add-property">
+          <div class="add-buttons">
+            <button class="btn btn-add" onclick="redirectToPropertyForm()">
+                <span class="material-icons-outlined">add</span> Ajouter un bien
+            </button>
+            <button class="btn btn-add" onclick="redirectToTreasuryForm()">
+                <span class="material-icons-outlined">account_balance_wallet</span> Ajouter Trésorerie
+            </button>
+            <button class="btn btn-add" onclick="redirectToDocumentsForm()">
+                <span class="material-icons-outlined">description</span> Ajouter Documents
+            </button>
+            <button class="btn btn-add" onclick="redirectToContactsForm()">
+                <span class="material-icons-outlined">contact_page</span> Ajouter Contact
+            </button>
+        </div>
+        </div>
+
+        
+        <!-- statistiques -->
+        <div class="main-chart">
+          <h2>Statistiques</h2>
+          <div class="chart">
+            <canvas id="myChart"></canvas>
+
+          </div>
+        </div>
+        <div class="products">
+
+          <div class="product-card">
+            <h2 class="product-description">A propos de nous</h2>
+            <p class="text-secondary">
+              Gestion de Patrimoine est une application web qui vous permet de gérer vos biens, votre trésorerie, vos documents et vos contacts.
+            </p>
+            <button type="button" class="product-button">
+              <span class="material-icons-outlined">add</span>
+            </button>
+          </div>
+  
+          <div class="social-media">
+            <div class="product">
+
+              <div>
+                <div class="product-icon background-red">
+                  <i class="bi bi-twitter"></i>
+                </div>
+                <h1 class="text-red">+274</h1>
+                <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+  
+              <div>
+                <div class="product-icon background-green">
+                  <i class="bi bi-instagram"></i>
+                </div>
+                <h1 class="text-green">+352</h1>
+                <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+  
+              <div>
+                <div class="product-icon background-orange">
+                  <i class="bi bi-facebook"></i>
+                </div>
+                <h1 class="text-orange">-126</h1>
+                <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+  
+              <div>
+                <div class="product-icon background-blue">
+                  <i class="bi bi-linkedin"></i>
+                </div>
+                <h1 class="text-blue">+102</h1>
+                <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              
+            </div>
+      </main>
+      <!-- End Main -->
+
+    <!-- JavaScript -->
+    <script src="js/scripts.js"></script>
+  </body>
+</html>    
